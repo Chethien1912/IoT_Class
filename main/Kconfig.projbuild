@@ -1,0 +1,9 @@
+menu "Relay Configuretion"
+
+    config RELAY_1_PIN
+        int "Device Active Level"
+        range 0 40
+        default 5
+        help
+
+endmenu
