@@ -1,0 +1,65 @@
+void app_main(void) {
+  printf("Starting relay control system...\n");
+
+  // Khởi tạo các relay dựa trên cấu hình Kconfig
+  uint8_t relay_count = 0;
+
+#ifdef CONFIG_RELAY_1_ENABLE
+  relay_init(0, CONFIG_RELAY_1_PIN, CONFIG_RELAY_1_ACTIVE_HIGH);
+  printf("Relay 1 initialized on GPIO %d\n", CONFIG_RELAY_1_PIN);
+  relay_count++;
+#endif
+
+#ifdef CONFIG_RELAY_2_ENABLE
+  relay_init(1, CONFIG_RELAY_2_PIN, CONFIG_RELAY_2_ACTIVE_HIGH);
+  printf("Relay 2 initialized on GPIO %d\n", CONFIG_RELAY_2_PIN);
+  relay_count++;
+#endif
+
+#ifdef CONFIG_RELAY_3_ENABLE
+  relay_init(2, CONFIG_RELAY_3_PIN, CONFIG_RELAY_3_ACTIVE_HIGH);
+  printf("Relay 3 initialized on GPIO %d\n", CONFIG_RELAY_3_PIN);
+  relay_count++;
+#endif
+
+  printf("Total relays initialized: %d\n\n", relay_count);
+
+  // Vòng lặp vô hạn để bật tắt các relay đã enable lần lượt
+  while (1) {
+#ifdef CONFIG_RELAY_1_ENABLE
+    relay_on(0);
+#ifdef CONFIG_RELAY_2_ENABLE
+    relay_off(1);
+#endif
+#ifdef CONFIG_RELAY_3_ENABLE
+    relay_off(2);
+#endif
+    printf("Relay 1: ON\n");
+    vTaskDelay(pdMS_TO_TICKS(2000));
+#endif
+
+#ifdef CONFIG_RELAY_2_ENABLE
+    relay_on(1);
+#ifdef CONFIG_RELAY_1_ENABLE
+    relay_off(0);
+#endif
+#ifdef CONFIG_RELAY_3_ENABLE
+    relay_off(2);
+#endif
+    printf("Relay 2: ON\n");
+    vTaskDelay(pdMS_TO_TICKS(2000));
+#endif
+
+#ifdef CONFIG_RELAY_3_ENABLE
+    relay_on(2);
+#ifdef CONFIG_RELAY_1_ENABLE
+    relay_off(0);
+#endif
+#ifdef CONFIG_RELAY_2_ENABLE
+    relay_off(1);
+#endif
+    printf("Relay 3: ON\n");
+    vTaskDelay(pdMS_TO_TICKS(2000));
+#endif
+  }
+}

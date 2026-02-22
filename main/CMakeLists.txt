@@ -1,6 +1,6 @@
 idf_component_register(
     SRCS "main.c"
-    REQUIRES 
-        spi_flash
-        driver
-    INCLUDE_DIRS "")
+    PRIV_REQUIRES spi_flash
+    REQUIRES Sensor Relay HTTPServer protocol_examples_common 
+    REQUIRES nvs_flash esp_wifi mqtt_manager
+)

@@ -407,10 +407,47 @@ CONFIG_PARTITION_TABLE_MD5=y
 # end of Partition Table
 
 #
-# Relay Configuretion
+# Project Configuration
 #
-CONFIG_RELAY_1_PIN=32
-# end of Relay Configuretion
+
+#
+# Relay Configuration
+#
+CONFIG_RELAY_ENABLE=y
+CONFIG_MAX_RELAYS=3
+
+#
+# Relay 1 Configuration
+#
+CONFIG_RELAY_1_ENABLE=y
+CONFIG_RELAY_1_PIN=25
+CONFIG_RELAY_1_ACTIVE_HIGH=y
+# end of Relay 1 Configuration
+
+#
+# Relay 2 Configuration
+#
+CONFIG_RELAY_2_ENABLE=y
+CONFIG_RELAY_2_PIN=33
+CONFIG_RELAY_2_ACTIVE_HIGH=y
+# end of Relay 2 Configuration
+
+#
+# Relay 3 Configuration
+#
+CONFIG_RELAY_3_ENABLE=y
+CONFIG_RELAY_3_PIN=32
+CONFIG_RELAY_3_ACTIVE_HIGH=y
+# end of Relay 3 Configuration
+# end of Relay Configuration
+# end of Project Configuration
+
+#
+# Example Connection Configuration
+#
+CONFIG_EXAMPLE_WIFI_SSID="NCT"
+CONFIG_EXAMPLE_WIFI_PASSWORD="chethiennguyen@"
+# end of Example Connection Configuration
 
 #
 # Compiler options
@@ -783,7 +820,7 @@ CONFIG_ESP_HTTP_CLIENT_EVENT_POST_TIMEOUT=2000
 #
 # HTTP Server
 #
-CONFIG_HTTPD_MAX_REQ_HDR_LEN=512
+CONFIG_HTTPD_MAX_REQ_HDR_LEN=1024
 CONFIG_HTTPD_MAX_URI_LEN=512
 CONFIG_HTTPD_ERR_RESP_NO_DELAY=y
 CONFIG_HTTPD_PURGE_BUF_LEN=32
@@ -1913,6 +1950,26 @@ CONFIG_WIFI_PROV_AUTOSTOP_TIMEOUT=30
 CONFIG_WIFI_PROV_STA_ALL_CHANNEL_SCAN=y
 # CONFIG_WIFI_PROV_STA_FAST_SCAN is not set
 # end of Wi-Fi Provisioning Manager
+
+#
+# Relay Configuration
+#
+
+#
+# Relay 1 Configuration
+#
+# end of Relay 1 Configuration
+
+#
+# Relay 2 Configuration
+#
+# end of Relay 2 Configuration
+
+#
+# Relay 3 Configuration
+#
+# end of Relay 3 Configuration
+# end of Relay Configuration
 # end of Component config
 
 # CONFIG_IDF_EXPERIMENTAL_FEATURES is not set

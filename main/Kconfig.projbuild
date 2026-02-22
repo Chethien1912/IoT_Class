@@ -1,9 +1,11 @@
-menu "Relay Configuretion"
+menu "Project Configuration"
 
-    config RELAY_1_PIN
-        int "Device Active Level"
-        range 0 40
-        default 5
-        help
+    # Source component Kconfig files
+    # Sử dụng rsource để load config từ các component
+    # Đường dẫn tương đối từ thư mục main/
+    
+    rsource "../components/Relay/Kconfig"
+    # rsource "../components/Sensor/Kconfig"    # Uncomment khi thêm Sensor config
+    # rsource "../components/Motor/Kconfig"     # Uncomment khi thêm Motor config
 
 endmenu

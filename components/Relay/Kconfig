@@ -1,0 +1,98 @@
+menu "Relay Configuration"
+
+    config RELAY_ENABLE
+        bool "Enable Relay Driver"
+        default y
+        help
+            Bật/tắt toàn bộ driver Relay.
+            Nếu tắt, tất cả các chức năng relay sẽ không hoạt động.
+
+    if RELAY_ENABLE
+
+        config MAX_RELAYS
+            int
+            default 3
+            help
+                Số lượng relay tối đa hỗ trợ.
+
+        menu "Relay 1 Configuration"
+            config RELAY_1_ENABLE
+                bool "Enable Relay 1"
+                default y
+                help
+                    Bật/tắt Relay 1.
+                    Chỉ khi bật, relay 1 mới được khởi tạo và sử dụng.
+
+            if RELAY_1_ENABLE
+                config RELAY_1_PIN
+                    int "Relay 1 GPIO Pin"
+                    range 0 40
+                    default 25
+                    help
+                        GPIO điều khiển Relay 1.
+                        Mặc định: GPIO 25
+
+                config RELAY_1_ACTIVE_HIGH
+                    bool "Relay 1 Active High"
+                    default y
+                    help
+                        Bật nếu relay kích mức HIGH.
+                        Tắt nếu relay kích mức LOW.
+            endif
+        endmenu
+
+        menu "Relay 2 Configuration"
+            config RELAY_2_ENABLE
+                bool "Enable Relay 2"
+                default y
+                help
+                    Bật/tắt Relay 2.
+                    Chỉ khi bật, relay 2 mới được khởi tạo và sử dụng.
+
+            if RELAY_2_ENABLE
+                config RELAY_2_PIN
+                    int "Relay 2 GPIO Pin"
+                    range 0 40
+                    default 33
+                    help
+                        GPIO điều khiển Relay 2.
+                        Mặc định: GPIO 33
+
+                config RELAY_2_ACTIVE_HIGH
+                    bool "Relay 2 Active High"
+                    default y
+                    help
+                        Bật nếu relay kích mức HIGH.
+                        Tắt nếu relay kích mức LOW.
+            endif
+        endmenu
+
+        menu "Relay 3 Configuration"
+            config RELAY_3_ENABLE
+                bool "Enable Relay 3"
+                default y
+                help
+                    Bật/tắt Relay 3.
+                    Chỉ khi bật, relay 3 mới được khởi tạo và sử dụng.
+
+            if RELAY_3_ENABLE
+                config RELAY_3_PIN
+                    int "Relay 3 GPIO Pin"
+                    range 0 40
+                    default 32
+                    help
+                        GPIO điều khiển Relay 3.
+                        Mặc định: GPIO 32
+
+                config RELAY_3_ACTIVE_HIGH
+                    bool "Relay 3 Active High"
+                    default y
+                    help
+                        Bật nếu relay kích mức HIGH.
+                        Tắt nếu relay kích mức LOW.
+            endif
+        endmenu
+
+    endif
+
+endmenu
